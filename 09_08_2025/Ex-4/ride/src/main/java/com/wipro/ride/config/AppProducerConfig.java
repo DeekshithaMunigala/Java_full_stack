@@ -12,13 +12,13 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-import com.wipro.ride.entity.Ride;
+import com.wipro.ride.dto.BookingRequestDTO;
 
 @Configuration
 public class AppProducerConfig {
 	
 	@Bean
-    public ProducerFactory<String, Ride> producerFactory() {
+    public ProducerFactory<String, BookingRequestDTO> producerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -27,7 +27,7 @@ public class AppProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, Ride> kafkaTemplate() {
+    public KafkaTemplate<String, BookingRequestDTO> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 

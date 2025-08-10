@@ -1,4 +1,4 @@
-package com.wipro.ride.config;
+package com.wipro.uber.config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,13 +12,14 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
-import com.wipro.ride.dto.BookingResponseDTO;
+import com.wipro.uber.dto.BookingRequestDTO;
 
 @Configuration
 public class ConsumerConfigApp {
+
 	
 	@Bean
-    public ConsumerFactory<String, BookingResponseDTO> consumerFactory() {
+    public ConsumerFactory<String, BookingRequestDTO> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -27,18 +28,17 @@ public class ConsumerConfigApp {
     }
 	
 	@Bean
-	public JsonDeserializer<BookingResponseDTO> jsonDeserializer() {
-	    JsonDeserializer<BookingResponseDTO> jsonDeserializer = new JsonDeserializer<>(BookingResponseDTO.class)
+	public JsonDeserializer<BookingRequestDTO> jsonDeserializer() {
+	    JsonDeserializer<BookingRequestDTO> jsonDeserializer = new JsonDeserializer<>(BookingRequestDTO.class)
 	    		.ignoreTypeHeaders();
 	    //jsonDeserializer.addTrustedPackages("*");
 	    return jsonDeserializer;
 	}
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, BookingResponseDTO> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, BookingResponseDTO> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, BookingRequestDTO> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, BookingRequestDTO> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
-
 }
