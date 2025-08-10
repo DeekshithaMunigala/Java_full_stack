@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id="department" class="com.wipro.springdemo.beans.Department">
+   		<property name="departmentName" value="Information Technology"/>
+   		<property name="departmentCode" value="IT" />
+   </bean>
+   
+   
+  <!--  Property based -->  
+  <!--   <bean id="college" class="com.wipro.springdemo.beans.College" scope="prototype">
+   		<property name="collegeName" value="Stanley"/>
+   		<property name="department" ref="department"/>
+   
+   </bean> -->
+   
+ <!--  Constructor based -->  
+   <bean id="college" class="com.wipro.springdemo.beans.College">
+   		<constructor-arg value="Stanley"/>
+   		<constructor-arg ref="department"/>
+   </bean>
+
+</beans>
+
