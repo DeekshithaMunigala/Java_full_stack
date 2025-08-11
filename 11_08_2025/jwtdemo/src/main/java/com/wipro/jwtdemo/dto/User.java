@@ -1,30 +1,34 @@
 package com.wipro.jwtdemo.dto;
 
 public class User {
-	
-	private String username;
-	private String password;
+
+	private String user;
+	private String pwd;
 	private String token;
-	
-	public String getName() {
-		return username;
+
+	public String getUser() {
+		return user;
 	}
-	public void setName(String username) {
-		this.username = username;
+
+	public void setUser(String user) {
+		this.user = user;
 	}
-	public String getPassword() {
-		return password;
+
+	public String getPwd() {
+		return pwd;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
+
 	public String getToken() {
 		return token;
 	}
+
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
-	
 
 }
+

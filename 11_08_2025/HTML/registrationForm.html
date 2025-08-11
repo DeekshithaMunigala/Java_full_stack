@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <h1>Registration Form</h1>
+    <form>
+      <div>
+        <label for="roll-number">Roll no : </label>
+        <input type="text" name="roll-number" id="roll-number" />
+      </div>
+      <br />
+
+      <div>
+        <label for="student-name">Student name : </label>
+        <input type="text" name="first-name" id="first-name" /> -
+        <input type="text" name="last-name" id="last-name" />
+      </div>
+      <br />
+
+      <div>
+        <label for="father-name">Father's name : </label>
+        <input type="text" name="father-name" id="father-name" />
+      </div>
+      <br />
+
+      <div>
+        <label for="date-of-birth">Date of birth : </label>
+        <input type="number" name="day" id="day" min="1" max="31" /> -
+        <input type="number" name="month" id="month" min="1" max="12" /> -
+        <input type="number" name="year" id="year" min="2000" /> (DD-MM-YYYY)
+      </div>
+      <br />
+
+      <div>
+        <label for="mobile-no">Mobile no : </label>
+        <input type="text" name="mobile-no" id="mobile-no" placeholder="+91" />
+        -
+        <input type="text" name="mobile-no" id="mobile-no" />
+      </div>
+      <br />
+
+      <div>
+        <label for="email-id">Email id : </label>
+        <input type="text" name="email-id" id="email-id" required />
+      </div>
+      <br />
+
+      <div>
+        <label for="password">Password : </label>
+        <input type="text" name="password" id="password" required />
+      </div>
+      <br />
+
+      <div>
+        <label for="gender">Gender : </label>
+        <input type="radio" name="male" id="male" required />
+        <label for="male">Male </label>
+        <input type="radio" name="female" id="female" required />
+        <label for="male">Female</label>
+      </div>
+      <br />
+
+      <div>
+        <label for="department">Department : </label>
+        <input type="checkbox" name="cse" id="cse" required />
+        <label for="cse">CSE</label>
+        <input type="checkbox" name="it" id="it" required />
+        <label for="it">IT</label>
+        <input type="checkbox" name="ece" id="ece" required />
+        <label for="ece">ECE</label>
+        <input type="checkbox" name="civil" id="civil" required />
+        <label for="civil">CIVIL</label>
+        <input type="checkbox" name="mech" id="mech" required />
+        <label for="mech">MECH</label>
+      </div>
+      <br />
+
+      <div>
+        <label for="course">Course : </label>
+        <select name="course" id="course">
+          <option value="be">BE</option>
+          <option value="btech">Btech</option>
+        </select>
+      </div>
+      <br />
+
+      <div>
+        <label for="student-photo">Student Photo : </label>
+        <input type="file" name="student-photo" id="student-photo" />
+      </div>
+      <br />
+
+      <div>
+        <label for="city">City : </label>
+        <input type="text" name="city" id="city" />
+      </div>
+      <br />
+
+      <div>
+        <label for="address">Address : </label>
+        <input type="textarea" name="address" id="address" />
+      </div>
+      <br />
+
+      <button>Register</button>
+    </form>
+  </body>
+</html>
