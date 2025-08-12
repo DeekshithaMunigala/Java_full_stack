@@ -1,0 +1,46 @@
+.container {
+  text-align: center;
+  /* border: 1px solid black; */
+  border-radius: 20px;
+  margin-top: 50px;
+  padding: 50px 0 50px 0;
+  background-color: azure;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  font-weight: bolder;
+  text-decoration: underline;
+  letter-spacing: 1px;
+}
+
+.form {
+  margin-top: 30px;
+}
+
+.label-rows {
+  margin-bottom: 15px;
+}
+
+.label-rows label {
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.label-rows input {
+  outline: 0;
+  border: 0;
+  border-radius: 10px;
+  padding: 5px 0 5px 10px;
+}
+
+#submit-btn {
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(97, 97, 204);
+  padding: 5px 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
