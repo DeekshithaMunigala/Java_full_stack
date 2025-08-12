@@ -1,0 +1,62 @@
+body {
+  scroll-behavior: smooth;
+  padding-top: 70px;
+}
+
+.navbar {
+  margin-bottom: 0;
+  background-color: rgb(255, 150, 167);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-item {
+  color: black;
+}
+
+#home {
+  background: url("https://static.vecteezy.com/system/resources/previews/010/930/988/non_2x/shopping-online-on-phone-with-podium-paper-art-modern-background-gifts-box-vector.jpg")
+    center/cover no-repeat;
+  color: purple;
+  text-align: center;
+  padding: 10rem 1rem;
+  margin-top: 0;
+}
+
+.product-row-1 {
+  margin-bottom: 20px;
+}
+
+.product-row-1 > img,
+.product-row-2 > img {
+  width: 200px;
+  height: 200px;
+}
+
+.button {
+  padding: 5px;
+  border-radius: 8px;
+  background-color: pink;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+section {
+  padding: 60px 0;
+}
+
+/* Cart & Checkout placeholders */
+.cart-table td,
+.cart-table th {
+  vertical-align: middle;
+}
+
+footer {
+  background-color: rgb(255, 150, 167);
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 25px 0;
+  margin-top: 40px;
+}
