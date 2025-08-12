@@ -1,0 +1,53 @@
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #1a1a1a;
+}
+
+/* Header */
+.navbar-dark {
+  background-color: #1a1a1a;
+}
+
+/* Hero Section */
+.hero {
+  background: url("https://picsum.photos/1200/400") center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+}
+
+.meta {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* CTA Button */
+.cta-btn {
+  background: #ff6b35;
+  color: white;
+  border: none;
+}
+
+.cta-btn:hover {
+  background: #e15b2d;
+}
+
+/* Sidebar cards */
+.sidebar-card {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+footer {
+  background: #1a1a1a;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}

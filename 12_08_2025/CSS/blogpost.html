@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <!-- <h1>Blog post</h1> -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">My Blog</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>The Art of Minimalism</h1>
+      <div class="meta">By Jane Doe | August 12, 2025</div>
+    </section>
+
+    <!-- Main Content + Sidebar -->
+    <div class="container my-5">
+      <div class="row g-4">
+        <!-- Main Content -->
+        <main class="col-lg-8">
+          <p>
+            Minimalism is more than just a design trend — it’s a way of
+            thinking. In this article, we’ll explore how to embrace simplicity
+            in your everyday life.
+          </p>
+
+          <section class="mb-4">
+            <h2>1. Declutter Your Space</h2>
+            <p>
+              Removing unnecessary items can bring a sense of calm and focus to
+              your surroundings. Start small, one drawer at a time.
+            </p>
+            <img
+              src="https://picsum.photos/800/300"
+              class="img-fluid rounded"
+              alt="Decluttered space"
+            />
+          </section>
+
+          <section class="mb-4">
+            <h2>2. Simplify Your Schedule</h2>
+            <p>
+              Busy doesn’t always mean productive. Learn to prioritize what
+              truly matters and let go of the rest.
+            </p>
+            <img
+              src="https://picsum.photos/800/301"
+              class="img-fluid rounded"
+              alt="Minimal calendar"
+            />
+          </section>
+
+          <section class="mb-4">
+            <h2>3. Choose Quality Over Quantity</h2>
+            <p>
+              Investing in fewer but higher-quality items leads to less waste
+              and more satisfaction in the long run.
+            </p>
+            <img
+              src="https://picsum.photos/800/302"
+              class="img-fluid rounded"
+              alt="High-quality items"
+            />
+          </section>
+
+          <button class="btn cta-btn mt-3">
+            Start Your Minimalist Journey
+          </button>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="col-lg-4">
+          <div class="sidebar-card text-center">
+            <img
+              src="https://picsum.photos/80"
+              class="rounded-circle mb-2"
+              alt="Author"
+            />
+            <h5>About the Author</h5>
+            <p>
+              Jane Doe is a lifestyle blogger passionate about simplicity and
+              mindfulness.
+            </p>
+            <p><a href="#">Twitter</a> | <a href="#">Instagram</a></p>
+          </div>
+
+          <div class="sidebar-card">
+            <h5>Recent Posts</h5>
+            <ul class="list-unstyled mb-0">
+              <li><a href="#">5 Tips for a Stress-Free Morning</a></li>
+              <li><a href="#">Why You Should Try Digital Detox</a></li>
+              <li><a href="#">Creating a Capsule Wardrobe</a></li>
+              <li><a href="#">The Benefits of Slow Living</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2025 My Blog | <a href="#" class="text-white">Twitter</a> |
+      <a href="#" class="text-white">Instagram</a>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
