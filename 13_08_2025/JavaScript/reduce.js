@@ -85,7 +85,13 @@ if (name === palindrome) {
 }
 
 let reverse = "";
-for (let i = name.length; i >= 0; i--) {
+for (let i = name.length - 1; i >= 0; i--) {
   reverse += name[i];
 }
 console.log(reverse);
+
+if (reverse === name) {
+  console.log(`The string ${name} is a palindrome`);
+} else {
+  console.log(`The string ${name} is not a palindrome`);
+}
