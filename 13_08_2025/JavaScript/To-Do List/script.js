@@ -17,4 +17,6 @@ addBtn.addEventListener("click", function () {
 
   li.appendChild(delBtn);
   taskList.appendChild(li);
+
+  input.value = "";
 });
