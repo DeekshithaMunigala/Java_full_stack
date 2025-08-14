@@ -24,7 +24,7 @@ loginBtn.addEventListener("click", () => {
 });
 
 logoutBtn.addEventListener("click", () => {
-  localStorage.removeItem("userId");
+  localStorage.removeItem("userName");
   updateStatus();
   userName.value = "";
   password.value = "";
