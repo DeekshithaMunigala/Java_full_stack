@@ -25,6 +25,7 @@ console.log(numberStack.peek());
 const stringStack = new Stack<string>();
 stringStack.push("Jungkook");
 stringStack.push("Kookiee");
+stringStack.push("V");
 stringStack.push("Hobi");
 console.log(stringStack.peek());
 console.log(stringStack.pop());
