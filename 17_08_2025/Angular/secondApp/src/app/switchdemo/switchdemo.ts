@@ -8,5 +8,5 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './switchdemo.css',
 })
 export class Switchdemo {
-  color: string = 'red';
+  color: string = 'default';
 }
