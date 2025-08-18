@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-secondcomp',
   imports: [],
   templateUrl: './secondcomp.html',
-  styleUrl: './secondcomp.css'
+  styleUrl: './secondcomp.css',
 })
-export class Secondcomp {
-
-}
+export class Secondcomp {}
