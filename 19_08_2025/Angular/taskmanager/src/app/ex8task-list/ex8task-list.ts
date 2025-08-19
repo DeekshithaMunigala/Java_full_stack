@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ITask } from '../itask';
 
 @Component({
@@ -9,8 +9,11 @@ import { ITask } from '../itask';
 })
 export class Ex8taskList {
   @Input() tasks: ITask[] = [];
+  @Output() deleteTaskEvent = new EventEmitter<number>();
 
-  deleteTask(id: number) {
-    this.tasks = this.tasks.filter((task) => task.id !== id);
+  deleteTask(id?: number) {
+    if (id !== undefined) {
+      this.deleteTaskEvent.emit(id);
+    }
   }
 }

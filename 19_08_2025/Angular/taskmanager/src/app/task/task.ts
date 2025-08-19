@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NewTask } from '../new-task';
+import { ITask } from '../itask';
 
 @Component({
   selector: 'app-task',
@@ -12,11 +12,11 @@ export class Task {
   description = '';
   category = '';
 
-  @Output() taskAdded = new EventEmitter<NewTask>();
+  @Output() taskAdded = new EventEmitter<ITask>();
 
   addTask() {
     if (this.description && this.category) {
-      const newTask: NewTask = {
+      const newTask: ITask = {
         description: this.description,
         category: this.category,
       };

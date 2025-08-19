@@ -21,4 +21,10 @@ export class Home {
     };
     this.tasks.push(newTask);
   }
+
+  deleteTask(id?: number) {
+    if (id !== undefined) {
+      this.tasks = this.tasks.filter((task) => task.id !== id);
+    }
+  }
 }
