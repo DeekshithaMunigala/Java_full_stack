@@ -1,0 +1,13 @@
+h1 {
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+.fruit-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}

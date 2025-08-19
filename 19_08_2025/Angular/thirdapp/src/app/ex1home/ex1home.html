@@ -1,1 +1,12 @@
-<app-ex1displaylist></app-ex1displaylist>
+<!-- Exercise-5 -->
+<h1>Fruits</h1>
+<div class="fruit-flex">
+  @for(fruit of fruitsList; track $index){
+  <!-- <app-ex1displaylist
+    [name]="fruit.name"
+    [img]="fruit.img"
+    [description]="fruit.description"
+  ></app-ex1displaylist> -->
+  <app-ex1displaylist [fruit]="fruit"></app-ex1displaylist>
+  }
+</div>
