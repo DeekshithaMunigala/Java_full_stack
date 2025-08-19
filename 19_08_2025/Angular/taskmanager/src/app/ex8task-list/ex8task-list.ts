@@ -1,30 +1,16 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { NewTask } from '../new-task';
+import { Component, Input } from '@angular/core';
+import { ITask } from '../itask';
 
 @Component({
   selector: 'app-ex8task-list',
-  imports: [FormsModule],
+  imports: [],
   templateUrl: './ex8task-list.html',
   styleUrl: './ex8task-list.css',
 })
 export class Ex8taskList {
-  description = '';
-  category = '';
+  @Input() tasks: ITask[] = [];
 
-  @Output() taskAdded = new EventEmitter<NewTask>();
-
-  addTask() {
-    if (this.description && this.category) {
-      const newTask: NewTask = {
-        description: this.description,
-        category: this.category,
-      };
-
-      this.taskAdded.emit(newTask);
-
-      this.description = '';
-      this.category = '';
-    }
+  deleteTask(id: number) {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 }
