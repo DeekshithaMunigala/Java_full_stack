@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IFruit } from '../ifruit';
 
 @Component({
@@ -16,4 +16,11 @@ export class Ex1displaylist {
     img: '',
     description: '',
   };
+
+  @Output() btnOnClick = new EventEmitter<string>();
+
+  onClick(fruitName: string) {
+    // console.log('clicked');
+    this.btnOnClick.emit(fruitName);
+  }
 }

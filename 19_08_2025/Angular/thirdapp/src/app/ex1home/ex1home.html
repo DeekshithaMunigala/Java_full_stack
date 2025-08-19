@@ -7,6 +7,6 @@
     [img]="fruit.img"
     [description]="fruit.description"
   ></app-ex1displaylist> -->
-  <app-ex1displaylist [fruit]="fruit"></app-ex1displaylist>
+  <app-ex1displaylist [fruit]="fruit" (btnOnClick)="remove($event)"></app-ex1displaylist>
   }
 </div>

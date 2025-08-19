@@ -61,4 +61,9 @@ export class Ex1home {
       description: 'Kiwi is brown outside and green inside',
     },
   ];
+
+  remove(fruitName: string) {
+    // console.log('clicked' + fruitName);
+    this.fruitsList = this.fruitsList.filter((fruit) => fruit.name !== fruitName);
+  }
 }
