@@ -26,12 +26,12 @@ export class Vechileservice {
   }
 
   saveVechile(vechile: Ivechile): Observable<Ivechile> {
-    let vechileSave: Partial<Ivechile> = {
+    let vechileSave: Omit<Ivechile, 'id'> = {
       make: vechile.make,
       model: vechile.model,
       fuelType: vechile.fuelType,
       price: vechile.price,
     };
-    return this.http.post<Ivechile>('http://localhost:3000/vechile', vechile);
+    return this.http.post<Ivechile>('http://localhost:3000/vechile', vechileSave);
   }
 }

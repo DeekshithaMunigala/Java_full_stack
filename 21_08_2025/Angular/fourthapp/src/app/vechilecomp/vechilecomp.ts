@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-vechilecomp',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './vechilecomp.html',
   styleUrl: './vechilecomp.css',
 })
@@ -60,7 +60,7 @@ export class Vechilecomp {
   }
 
   update() {
-    this.vechileService.saveVechile(this.vechileEdit).subscribe(
+    this.vechileService.updateVechile(this.vechileEdit).subscribe(
       (updatedVechile: Ivechile) => {
         console.log('Vechile updated successfully : ', updatedVechile);
 

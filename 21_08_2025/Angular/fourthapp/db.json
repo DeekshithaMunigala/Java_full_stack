@@ -1,16 +1,9 @@
 {
   "vechile": [
     {
-      "make": "Toyota",
-      "model": "Corolla",
-      "fuelType": "Electric",
-      "price": 22000,
-      "id": "cba2"
-    },
-    {
       "make": "Tesla",
       "model": "Model 3",
-      "fuelType": "Electric",
+      "fuelType": "Diesel",
       "price": 39990,
       "id": "1213"
     },
@@ -22,13 +15,6 @@
       "id": "3748"
     },
     {
-      "make": "Hyundai",
-      "model": "Ioniq 5",
-      "fuelType": "Electric",
-      "price": 42000,
-      "id": "4945"
-    },
-    {
       "make": "Honda",
       "model": "Civic",
       "fuelType": "Petrol",
@@ -36,25 +22,18 @@
       "id": "b1da"
     },
     {
-      "id": "abcd",
+      "id": "8683",
+      "make": "Hyundai",
+      "model": "Ioniq 5",
+      "fuelType": "Electric",
+      "price": 50000
+    },
+    {
+      "id": "e4e0",
       "make": "Tesla",
-      "model": "Model 4",
+      "model": "Model 3",
       "fuelType": "Electric",
-      "price": 45000
-    },
-    {
-      "id": "cba2",
-      "make": "Toyota",
-      "model": "Corolla",
-      "fuelType": "Electric",
-      "price": 25000
-    },
-    {
-      "id": "",
-      "make": "",
-      "model": "",
-      "fuelType": "",
-      "price": 0
+      "price": 57999
     }
   ]
 }
