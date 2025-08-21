@@ -41,6 +41,20 @@
       "model": "Model 4",
       "fuelType": "Electric",
       "price": 45000
+    },
+    {
+      "id": "cba2",
+      "make": "Toyota",
+      "model": "Corolla",
+      "fuelType": "Electric",
+      "price": 25000
+    },
+    {
+      "id": "",
+      "make": "",
+      "model": "",
+      "fuelType": "",
+      "price": 0
     }
   ]
 }
