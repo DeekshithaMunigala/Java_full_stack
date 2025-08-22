@@ -17,6 +17,7 @@ import com.wipro.productmngmt2.service.ProductService;
 
 @RestController
 @RequestMapping("/product")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 	
 	@Autowired
