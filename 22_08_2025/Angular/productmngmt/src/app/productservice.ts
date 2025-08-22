@@ -23,19 +23,19 @@ export class Productservice {
 
   deleteProduct(id: string | number): Observable<void> {
     // const url: string = `http://localhost:3000/products/${id}`;
-    const url: string = `http://localhost:9000/product`;
+    const url: string = `http://localhost:9000/product/${id}`;
     return this.http.delete<void>(url);
   }
 
   findProduct(id: string | number): Observable<Product> {
     // const url: string = `http://localhost:3000/products/${id}`;
-    const url: string = `http://localhost:9000/product`;
+    const url: string = `http://localhost:9000/product/${id}`;
     return this.http.get<Product>(url);
   }
 
   saveProduct(product: Product): Observable<Product> {
     // const url: string = `http://localhost:3000/products/${product.id}`;
-    const url: string = `http://localhost:9000/product`;
+    const url: string = `http://localhost:9000/product/${product.id}`;
     return this.http.put<Product>(url, product);
   }
 }
