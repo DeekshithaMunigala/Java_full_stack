@@ -15,6 +15,7 @@ export class Productadd {
   productName: string = '';
   productCategory: string = '';
   productPrice: number = 0;
+  productQty: number = 0;
 
   submit() {
     this.productService
@@ -22,6 +23,7 @@ export class Productadd {
         name: this.productName,
         category: this.productCategory,
         price: this.productPrice,
+        qty: this.productQty,
       })
       .subscribe(
         (response) => {

@@ -1,6 +1,6 @@
 <div class="container my-4">
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="fw-bold">Product List</h2>
+    <h2 class="fw-bold">📦 Product List</h2>
     <button class="btn btn-primary" (click)="addProduct()">➕ Add Product</button>
   </div>
 
@@ -14,16 +14,23 @@
           <p class="card-text fs-5 text-success fw-semibold">
             {{ product.price | currency : 'INR' }}
           </p>
+          <p class="card-text"><strong>Available:</strong> {{ product.qty }}</p>
 
           <div class="mt-auto">
             <a
               [routerLink]="['/productedit/', product.id]"
               class="btn btn-outline-primary btn-sm me-2"
-              >Edit</a
             >
-            <a [routerLink]="['/productdelete/', product.id]" class="btn btn-outline-danger btn-sm"
-              >Delete</a
+              Edit
+            </a>
+            <a
+              [routerLink]="['/productdelete/', product.id]"
+              class="btn btn-outline-danger btn-sm me-2"
             >
+              Delete
+            </a>
+            <a routerLink="/order" class="btn btn-outline-success btn-sm me-2">Place Order</a>
+            <a routerLink="/orders" class="btn btn-outline-dark btn-sm">Order History</a>
           </div>
         </div>
       </div>

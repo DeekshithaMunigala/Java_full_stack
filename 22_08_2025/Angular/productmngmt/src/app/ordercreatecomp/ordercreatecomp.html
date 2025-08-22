@@ -1,0 +1,30 @@
+<!-- ordercreate.html -->
+<h2>Place Order</h2>
+
+<form #f="ngForm" (ngSubmit)="placeOrder(f)">
+  <label>Product</label>
+  <select name="product" [(ngModel)]="selectedProductId" required>
+    <option [ngValue]="undefined" disabled>Select a product</option>
+    <option *ngFor="let p of products" [ngValue]="p.id">
+      {{ p.name }} (available: {{ p.qty }}) – {{ p.price | currency }}
+    </option>
+  </select>
+
+  <label>Quantity</label>
+  <input
+    type="number"
+    name="qty"
+    [(ngModel)]="purchaseQty"
+    [min]="1"
+    [max]="selectedProduct?.qty || 1"
+    required
+  />
+
+  <div *ngIf="selectedProduct && purchaseQty > selectedProduct.qty" style="color: red">
+    You cannot order more than available ({{ selectedProduct.qty }}).
+  </div>
+
+  <div *ngIf="errorMsg" style="color: red">{{ errorMsg }}</div>
+
+  <button type="submit" [disabled]="placing || !canPlace()">Place Order</button>
+</form>

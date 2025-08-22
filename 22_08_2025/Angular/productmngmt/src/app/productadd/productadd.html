@@ -2,7 +2,7 @@
   <div class="card shadow-lg p-4" style="max-width: 600px; margin: auto; border-radius: 1rem">
     <h3 class="text-center fw-bold mb-4">🛒 Add Product</h3>
 
-    <form>
+    <form (ngSubmit)="submit()" #f="ngForm">
       <div class="mb-3">
         <label for="name" class="form-label fw-semibold">Name</label>
         <input
@@ -12,6 +12,7 @@
           type="text"
           class="form-control"
           placeholder="Enter product name"
+          required
         />
       </div>
 
@@ -24,6 +25,7 @@
           type="text"
           class="form-control"
           placeholder="Enter product category"
+          required
         />
       </div>
 
@@ -36,11 +38,27 @@
           type="number"
           class="form-control"
           placeholder="Enter product price"
+          min="1"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="qty" class="form-label fw-semibold">Available Qty</label>
+        <input
+          id="qty"
+          name="qty"
+          [(ngModel)]="productQty"
+          type="number"
+          class="form-control"
+          placeholder="Enter available quantity"
+          min="0"
+          required
         />
       </div>
 
       <div class="text-center">
-        <button type="button" class="btn btn-success px-4" (click)="submit()">✅ Submit</button>
+        <button type="submit" class="btn btn-success px-4" [disabled]="f.invalid">✅ Save</button>
       </div>
     </form>
   </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from './product';
+import { OrderResponse } from './order';
 
 @Injectable({
   providedIn: 'root',
@@ -37,5 +38,13 @@ export class Productservice {
     // const url: string = `http://localhost:3000/products/${product.id}`;
     const url: string = `http://localhost:9000/product/${product.id}`;
     return this.http.put<Product>(url, product);
+  }
+
+  placeOrder(productId: number, qty: number): Observable<OrderResponse> {
+    return this.http.post<OrderResponse>(`http://localhost:9000/orders`, { productId, qty });
+  }
+
+  getOrders(): Observable<OrderResponse[]> {
+    return this.http.get<OrderResponse[]>(`http://localhost:9000/orders`);
   }
 }
