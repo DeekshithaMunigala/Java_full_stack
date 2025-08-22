@@ -1,0 +1,47 @@
+<div class="container my-5">
+  <div class="card shadow-lg p-4" style="max-width: 600px; margin: auto; border-radius: 1rem">
+    <h3 class="text-center fw-bold mb-4">🛒 Add Product</h3>
+
+    <form>
+      <div class="mb-3">
+        <label for="name" class="form-label fw-semibold">Name</label>
+        <input
+          id="name"
+          name="name"
+          [(ngModel)]="productName"
+          type="text"
+          class="form-control"
+          placeholder="Enter product name"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label fw-semibold">Category</label>
+        <input
+          id="category"
+          name="category"
+          [(ngModel)]="productCategory"
+          type="text"
+          class="form-control"
+          placeholder="Enter product category"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label fw-semibold">Price</label>
+        <input
+          id="price"
+          name="price"
+          [(ngModel)]="productPrice"
+          type="number"
+          class="form-control"
+          placeholder="Enter product price"
+        />
+      </div>
+
+      <div class="text-center">
+        <button type="button" class="btn btn-success px-4" (click)="submit()">✅ Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
