@@ -45,13 +45,4 @@ export class Productedit implements OnInit {
       },
     });
   }
-
-  // save() {
-  // // make sure id is set
-  // if (!this.product.id && this.id) this.product.id = Number(this.id);
-  // this.productService.saveProduct(this.product).subscribe({
-  //   next: () => this.router.navigate(['/productlist']),
-  //   error: (e) => console.error('Error saving the product : ', e),
-  // });
-  // }
 }

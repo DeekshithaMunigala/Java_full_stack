@@ -7,5 +7,5 @@ export interface OrderResponse {
   id: number;
   productName: string;
   qty: number;
-  orderDate: string;
+  orderDate: Date | string;
 }
