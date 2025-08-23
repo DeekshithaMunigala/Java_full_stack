@@ -1,4 +1,4 @@
-package com.wipro.productmngmt2.controller;
+package com.wipro.food.controller;
 
 import java.util.List;
 
@@ -13,39 +13,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wipro.productmngmt2.entity.Product;
-import com.wipro.productmngmt2.service.ProductService;
+import com.wipro.food.entity.Food;
+import com.wipro.food.service.FoodService;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/food")
 @CrossOrigin(origins = "http://localhost:4200") 
-public class ProductController {
+public class FoodController {
 	
 	@Autowired
-	ProductService productService;
+	FoodService foodService;
 	
 	@PostMapping
-	void save(@RequestBody Product product) {
-		productService.save(product);
+	public void save(@RequestBody Food food) {
+		foodService.save(food);
 	}
 	
 	@GetMapping
-	List<Product> findAll(){
-		return productService.findAll();
+	public List<Food> findAll(){
+		return foodService.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	Product findById(@PathVariable int id) {
-		return productService.findById(id);
+	public Food findById(@PathVariable Long id) {
+		return foodService.findById(id);
 	}
 	
 	@DeleteMapping("/{id}")
-	void deleteById(@PathVariable int id) {
-		productService.deleteById(id);
+	void deleteById(@PathVariable Long id) {
+		foodService.deleteById(id);
 	}
 	
 	@PutMapping("/{id}")
-	void update(@PathVariable int id, @RequestBody Product product) {
-		productService.save(product);
+	Food updateFoodById(@PathVariable Long id, @RequestBody Food food) {
+		return foodService.updateFoodById(id, food);
 	}
+
 }
