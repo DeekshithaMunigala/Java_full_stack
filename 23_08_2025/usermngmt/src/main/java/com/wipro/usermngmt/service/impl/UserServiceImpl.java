@@ -18,6 +18,7 @@ import com.wipro.usermngmt.entity.User;
 import com.wipro.usermngmt.repo.UserRepo;
 import com.wipro.usermngmt.service.UserService;
 import com.wipro.usermngmt.util.AppConstant;
+import com.wipro.usermngmt.util.EncryptUtil;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -44,28 +45,31 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
-	@Override
-	public void save(User user) {
-		userRepo.save(user);
-	}
-
+	
 	@Override
 	public void deleteById(int id) {
 		userRepo.deleteById(id);
 	}
 
+	
+	@Override
+	public void save(User user) {
+	    // Always hash password before saving
+	    String encryptedPassword = EncryptUtil.getEncryptedPassword(user.getPassWord());
+	    user.setPassWord(encryptedPassword);
+	    userRepo.save(user);
+	}
+
 	@Override
 	public Token login(User user) {
-	    User userData = userRepo.findByEmailAndPassWord(user.getEmail(), user.getPassWord());
-	    if (userData != null) {
-	        String jwtToken = "Bearer " + getJWTToken(user.getEmail());
-	        Token token = new Token();
-	        token.setToken(jwtToken);
-	        return token;
-	    } else {
-	        throw new RuntimeException("Invalid email or password");
+	    User dbUser = userRepo.findByEmail(user.getEmail());
+	    if (dbUser != null && EncryptUtil.checkPassword(user.getPassWord(), dbUser.getPassWord())) {
+	        String jwtToken = getJWTToken(user.getEmail());
+	        return new Token("Bearer " + jwtToken); // prepend Bearer
 	    }
+	    throw new RuntimeException("Invalid email or password");
 	}
+
 	
 	
 

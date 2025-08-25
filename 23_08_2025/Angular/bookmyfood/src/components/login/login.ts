@@ -19,16 +19,16 @@ export class Login {
   login() {
     const loginReq: Ilogin = {
       email: this.email,
-      passWord: this.password, // match backend field name
+      passWord: this.password,
     };
 
     this.loginService.login(loginReq).subscribe({
       next: (res) => {
-        // store token in localStorage
         this.loginService.saveToken(res.token);
         console.log(res.token);
+
         alert('Login successful!');
-        this.router.navigate(['/food']); // redirect to food list
+        this.router.navigate(['/food']);
       },
       error: () => {
         alert('Invalid email or password!');

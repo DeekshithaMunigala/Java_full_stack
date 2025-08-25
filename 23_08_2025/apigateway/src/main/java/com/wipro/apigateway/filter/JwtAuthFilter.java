@@ -23,7 +23,7 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
 
     private static final List<String> openApiEndpoints = List.of(
             "/user/login",
-            "/user/register"
+            "/user"
     );
 
     @Override

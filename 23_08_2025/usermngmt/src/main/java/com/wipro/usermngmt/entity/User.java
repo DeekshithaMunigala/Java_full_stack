@@ -24,5 +24,4 @@ public class User {
 	
 	@Column
 	String passWord;
-
 }
