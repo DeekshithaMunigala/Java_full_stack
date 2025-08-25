@@ -1,0 +1,41 @@
+<h2>Registration Form</h2>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="reg-form">
+  <div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter your name" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Enter your email" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Choose date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Subject of Study</mat-label>
+      <mat-select formControlName="subject">
+        @for(sub of subjects; track $index){
+        <mat-option [value]="sub">{{ sub }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="button-container">
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+</form>
