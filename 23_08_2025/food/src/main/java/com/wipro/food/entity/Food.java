@@ -20,6 +20,9 @@ public class Food {
 	@Column(name = "food_name")
 	String name;
 	
+	@Column(name = "food_img")
+	String img;
+	
 	@Column(name = "food_price")
 	double price;
 	

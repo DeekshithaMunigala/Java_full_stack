@@ -39,6 +39,7 @@ public class FoodServiceImpl implements FoodService {
 	public Food updateFoodById(Long id, Food food) {
 		Food existingFood = findById(id);
 		existingFood.setName(food.getName());
+		existingFood.setImg(food.getImg());	
 		existingFood.setPrice(food.getPrice());
 		existingFood.setCategory(food.getCategory());
 		return foodRepo.save(existingFood);

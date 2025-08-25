@@ -12,6 +12,7 @@ export class Food {
   foods: Food[] = [];
 
   name: string = '';
+  img: string = '';
   category: string = '';
   price: number = 0;
 
