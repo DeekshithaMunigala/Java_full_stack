@@ -1,6 +1,5 @@
 package com.wipro.apigateway.filter;
 
-
 import com.wipro.apigateway.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
         String path = request.getURI().getPath();
 
         // Allow open endpoints
-        if (openApiEndpoints.stream().anyMatch(path::contains)) {
+        if (openApiEndpoints.stream().anyMatch(path::endsWith)) {
             return chain.filter(exchange);
         }
 
@@ -52,13 +51,14 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
             return exchange.getResponse().setComplete();
         }
 
-        // Extract claims and forward user info to downstream services
+        // Extract claims
         Claims claims = jwtUtil.extractAllClaims(token);
         String username = claims.getSubject();
 
-        ServerHttpRequest modifiedRequest = exchange.getRequest()
-                .mutate()
+        // Forward both X-Auth-User and original Authorization header
+        ServerHttpRequest modifiedRequest = request.mutate()
                 .header("X-Auth-User", username)
+                .header(HttpHeaders.AUTHORIZATION, authHeader)
                 .build();
 
         return chain.filter(exchange.mutate().request(modifiedRequest).build());
