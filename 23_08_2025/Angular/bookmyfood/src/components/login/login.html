@@ -1,8 +1,35 @@
+<!-- ✅ Toast at top-center -->
+<div
+  *ngIf="toastMessage"
+  class="toast-container position-fixed top-0 start-50 translate-middle-x mt-3"
+  style="z-index: 2000"
+>
+  <div
+    class="toast align-items-center text-white border-0 show"
+    [ngClass]="toastType === 'success' ? 'bg-success' : 'bg-danger'"
+    role="alert"
+  >
+    <div class="d-flex">
+      <div class="toast-body">{{ toastMessage }}</div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        (click)="closeToast()"
+      ></button>
+    </div>
+  </div>
+</div>
+
+<!-- Your login/signup form -->
 <div class="d-flex align-items-center justify-content-center vh-100">
   <div class="card shadow-lg p-4 rounded-4" style="max-width: 400px; width: 100%">
     <div class="card-body">
-      <h3 class="text-center mb-4 fw-bold">Login</h3>
-      <form (ngSubmit)="login()">
+      <h3 class="text-center mb-4 fw-bold">
+        {{ isSignupMode ? 'Sign Up' : 'Login' }}
+      </h3>
+
+      <!-- Login Form -->
+      <form *ngIf="!isSignupMode" (ngSubmit)="login()">
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
           <input
@@ -27,13 +54,60 @@
             required
           />
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="remember" />
-          <label class="form-check-label" for="remember">Remember me</label>
-        </div>
         <div class="d-grid">
           <button type="submit" class="btn btn-primary rounded-3">Login</button>
         </div>
+        <p class="text-center mt-3">
+          New user?
+          <a href="javascript:void(0)" (click)="toggleMode()">Sign Up</a>
+        </p>
+      </form>
+
+      <!-- Signup Form -->
+      <form *ngIf="isSignupMode" (ngSubmit)="signup()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control rounded-3"
+            id="username"
+            [(ngModel)]="username"
+            name="username"
+            placeholder="Enter username"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="emailSignup" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control rounded-3"
+            id="emailSignup"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="Enter email"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="passwordSignup" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control rounded-3"
+            id="passwordSignup"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Enter password"
+            required
+          />
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success rounded-3">Sign Up</button>
+        </div>
+        <p class="text-center mt-3">
+          Already have an account?
+          <a href="javascript:void(0)" (click)="toggleMode()">Login</a>
+        </p>
       </form>
     </div>
   </div>

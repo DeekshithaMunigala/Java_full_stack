@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Ilogin } from '../interfaces/ilogin';
 import { Observable } from 'rxjs';
 import { Token } from '../interfaces/token';
+import { Isignup } from '../interfaces/isignup';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +26,10 @@ export class Loginservice {
 
   logout() {
     localStorage.removeItem('jwtToken');
+  }
+
+  signup(req: Isignup): Observable<any> {
+    const BASE_URL = 'http://localhost:9191/user';
+    return this.http.post(BASE_URL, req);
   }
 }
