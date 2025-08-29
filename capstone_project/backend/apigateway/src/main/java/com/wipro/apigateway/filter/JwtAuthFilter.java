@@ -31,12 +31,12 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
         ServerHttpRequest request = exchange.getRequest();
         String path = request.getURI().getPath();
 
-        // Allow open endpoints
+        
         if (openApiEndpoints.stream().anyMatch(path::endsWith)) {
             return chain.filter(exchange);
         }
 
-        // Check for Authorization header
+        
         if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
             exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return exchange.getResponse().setComplete();
@@ -51,11 +51,11 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
             return exchange.getResponse().setComplete();
         }
 
-        // Extract claims
+       
         Claims claims = jwtUtil.extractAllClaims(token);
         String username = claims.getSubject();
 
-        // Forward both X-Auth-User and original Authorization header
+       
         ServerHttpRequest modifiedRequest = request.mutate()
                 .header("X-Auth-User", username)
                 .header(HttpHeaders.AUTHORIZATION, authHeader)
@@ -66,6 +66,6 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
 
     @Override
     public int getOrder() {
-        return -1; // run before routing
+        return -1; 
     }
 }

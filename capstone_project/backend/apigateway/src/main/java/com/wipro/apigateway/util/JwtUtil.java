@@ -14,7 +14,7 @@ import io.jsonwebtoken.security.Keys;
 public class JwtUtil {
 
     private static final String SECRET = "mySecretKeymySecretKeymySecretKeymySecretKey"; 
-    // at least 32 chars for HS256
+   
 
     private final Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
 

@@ -13,8 +13,8 @@ public class SecurityConfig {
 	        return http
 	                .csrf(ServerHttpSecurity.CsrfSpec::disable)
 	                .authorizeExchange(exchange -> exchange
-	                        .pathMatchers("/user/register", "/user/login").permitAll() // open endpoints
-	                        .anyExchange().authenticated() // others require auth
+	                        .pathMatchers("/user/register", "/user/login").permitAll() 
+	                        .anyExchange().authenticated() 
 	                )
 	                .build();
 	    }
