@@ -73,5 +73,16 @@ public class ProductController {
         Product product = productService.getProductById(id);
         return ResponseEntity.ok(product);
     }  
+    
+    @GetMapping("/{id}/quantity")
+    @Operation(summary = "Get product quantity")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Product quantity found"),
+        @ApiResponse(responseCode = "404", description = "Product not found")
+    })
+    public ResponseEntity<Integer> getProductQuantity(@PathVariable Long id) {
+        Product product = productService.getProductById(id);
+        return ResponseEntity.ok(product.getQuantity());
+    }
 
 }

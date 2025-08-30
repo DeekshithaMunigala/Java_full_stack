@@ -18,6 +18,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -52,6 +53,8 @@ public class OrderServiceImpl implements OrderService {
 	        if (cartItems.isEmpty()) {
 	            throw new RuntimeException("Cart is empty");
 	        }
+	        
+	        checkProductAvailability(cartItems);
 	        
 	        // Calculate total amount
 	        Double totalAmount = cartItems.stream()
@@ -133,6 +136,33 @@ public class OrderServiceImpl implements OrderService {
 	    public Order getOrderById(Long orderId) {
 	        return orderRepository.findById(orderId)
 	                .orElseThrow(() -> new ResourceNotFoundException("Order not found with id: " + orderId));
+	    }
+	    
+	    private void checkProductAvailability(List<CartItem> cartItems) {
+	        for (CartItem cartItem : cartItems) {
+	            try {
+	                // Call Product Service to check availability
+	                Integer availableQuantity = webClientBuilder.build()
+	                        .get()
+	                        .uri("http://productms/product/{id}/quantity", cartItem.getProductId())
+	                        .retrieve()
+	                        .bodyToMono(Integer.class)
+	                        .block();
+	                
+	                if (availableQuantity == null || availableQuantity < cartItem.getQuantity()) {
+	                    throw new RuntimeException("Insufficient quantity for product ID: " + cartItem.getProductId() + 
+	                                             ". Available: " + availableQuantity + ", Requested: " + cartItem.getQuantity());
+	                }
+	                
+	            } catch (WebClientResponseException e) {
+	                if (e.getStatusCode().value() == 404) {
+	                    throw new RuntimeException("Product not found with ID: " + cartItem.getProductId());
+	                }
+	                throw new RuntimeException("Error checking product availability: " + e.getMessage());
+	            } catch (Exception e) {
+	                throw new RuntimeException("Error checking product availability: " + e.getMessage());
+	            }
+	        }
 	    }
 
 }

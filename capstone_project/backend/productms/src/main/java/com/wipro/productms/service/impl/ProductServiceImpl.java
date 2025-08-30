@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.wipro.productms.dto.OrderEvent;
 import com.wipro.productms.dto.ProductDTO;
 import com.wipro.productms.entity.Product;
 import com.wipro.productms.repo.ProductRepo;
@@ -30,6 +31,7 @@ public class ProductServiceImpl implements ProductService {
     
     @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
+
     
     @Value("${upload.path}")
     private String uploadPath;
