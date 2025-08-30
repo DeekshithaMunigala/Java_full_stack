@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import com.wipro.productms.dto.ProductDTO;
 import com.wipro.productms.entity.Product;
 import com.wipro.productms.service.ProductService;
@@ -16,7 +17,7 @@ import com.wipro.productms.service.ProductService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/product")
 @Tag(name = "Product Management", description = "APIs for managing products")
 public class ProductController {
 	

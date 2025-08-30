@@ -1,0 +1,63 @@
+<div class="product-list-container">
+  <div class="header-actions">
+    <h2>Products</h2>
+
+    @if (isAdmin) {
+    <button class="btn btn-primary" routerLink="/admin/add-product">Add New Product</button>
+    }
+  </div>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search products by name or description..."
+      [(ngModel)]="searchTerm"
+      (input)="filterProducts()"
+      class="search-input"
+    />
+  </div>
+
+  <div class="products-grid">
+    @for (product of filteredProducts; track product.id) {
+    <div class="product-card">
+      @if (product.imageUrl) {
+      <img [src]="product.imageUrl" [alt]="product.name" class="product-image" />
+      } @else {
+      <div class="product-image placeholder">No Image</div>
+      }
+
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">{{ product.price | currency : 'USD' : 'symbol' : '1.2-2' }}</p>
+        <p class="product-quantity">In stock: {{ product.quantity }}</p>
+      </div>
+
+      <div class="product-actions">
+        @if (!isAdmin) {
+        <button
+          class="btn btn-primary"
+          (click)="addToCart(product)"
+          [disabled]="product.quantity === 0"
+        >
+          {{ product.quantity === 0 ? 'Out of Stock' : 'Add to Cart' }}
+        </button>
+        } @if (isAdmin) {
+        <div class="admin-actions">
+          <button class="btn btn-secondary" [routerLink]="['/admin/edit-product', product?.id!]">
+            Edit
+          </button>
+          <button class="btn btn-danger" (click)="deleteProduct(product?.id!)">Delete</button>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+
+  @if (filteredProducts.length === 0) {
+  <div class="no-products">
+    <p>No products found matching your search.</p>
+  </div>
+  }
+</div>
