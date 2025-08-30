@@ -10,7 +10,9 @@ import com.wipro.userservice.dto.Token;
 import com.wipro.userservice.dto.UserDTO;
 import com.wipro.userservice.entity.User;
 import com.wipro.userservice.service.UserService;
+import com.wipro.userservice.util.AppConstant;
 
+import io.jsonwebtoken.Jwts;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -105,4 +107,7 @@ public class UserController {
         User user = userService.getUserByUsername(username);
         return ResponseEntity.ok(user);
     }
+    
+    
+
 }

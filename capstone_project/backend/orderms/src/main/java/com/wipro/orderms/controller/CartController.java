@@ -15,7 +15,7 @@ import com.wipro.orderms.service.CartService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/cart")
+@RequestMapping("/cart")
 @Tag(name = "Cart Management", description = "APIs for managing shopping cart")
 public class CartController {
 

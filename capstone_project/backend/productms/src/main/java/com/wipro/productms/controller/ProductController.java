@@ -16,7 +16,7 @@ import com.wipro.productms.service.ProductService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/products")
 @Tag(name = "Product Management", description = "APIs for managing products")
 public class ProductController {
 	

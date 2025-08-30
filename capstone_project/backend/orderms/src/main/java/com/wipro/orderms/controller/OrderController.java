@@ -14,7 +14,7 @@ import com.wipro.orderms.service.OrderService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/orders")
 @Tag(name = "Order Management", description = "APIs for managing orders")
 public class OrderController {
 

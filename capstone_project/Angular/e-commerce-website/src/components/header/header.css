@@ -1,0 +1,11 @@
+.username {
+  cursor: pointer;
+}
+
+.username strong {
+  color: #0d6efd;
+}
+
+.username:hover strong {
+  text-decoration: underline;
+}

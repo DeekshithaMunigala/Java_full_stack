@@ -1,0 +1,125 @@
+<div class="login-container">
+  <h2>{{ isSignupMode ? 'Sign Up' : 'Login' }}</h2>
+
+  <form [formGroup]="loginForm">
+    <!-- Username only for signup -->
+    @if (isSignupMode) {
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        class="form-control"
+        [class.is-invalid]="
+          loginForm.get('username')?.invalid && loginForm.get('username')?.touched
+        "
+      />
+      @if (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) {
+      <div class="error-message">
+        @if (loginForm.get('username')?.errors?.['required']) {
+        <span>Username is required</span>
+        } @if (loginForm.get('username')?.errors?.['minlength']) {
+        <span>Username must be at least 3 characters</span>
+        }
+      </div>
+      }
+    </div>
+    }
+
+    <!-- Email always visible -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+        [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+      />
+      @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+      <div class="error-message">
+        @if (loginForm.get('email')?.errors?.['required']) {
+        <span>Email is required</span>
+        } @if (loginForm.get('email')?.errors?.['email']) {
+        <span>Please enter a valid email</span>
+        }
+      </div>
+      }
+    </div>
+
+    <!-- Password always visible -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+        [class.is-invalid]="
+          loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+        "
+      />
+      @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+      <div class="error-message">
+        @if (loginForm.get('password')?.errors?.['required']) {
+        <span>Password is required</span>
+        } @if (loginForm.get('password')?.errors?.['minlength']) {
+        <span>Password must be at least 6 characters</span>
+        }
+      </div>
+      }
+    </div>
+
+    <!-- Extra fields only in signup -->
+    @if (isSignupMode) {
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" id="address" formControlName="address" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select id="role" formControlName="role" class="form-control">
+        <option value="CUSTOMER">Customer</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+    </div>
+    }
+
+    <!-- Toast -->
+    @if (toastMessage) {
+    <div class="toast toast-{{ toastType }}">
+      <span>{{ toastMessage }}</span>
+      <button class="toast-close" (click)="closeToast()">×</button>
+    </div>
+    }
+
+    <!-- Actions -->
+    <div class="form-actions">
+      @if (isSignupMode) {
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="signup()"
+        [disabled]="loginForm.invalid"
+      >
+        Sign Up
+      </button>
+      <button type="button" class="btn btn-link" (click)="toggleMode()">
+        Already have an account? Login
+      </button>
+      } @else {
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="login()"
+        [disabled]="!loginForm.get('email')?.valid || !loginForm.get('password')?.valid"
+      >
+        Login
+      </button>
+      <button type="button" class="btn btn-link" (click)="toggleMode()">Create an account</button>
+      }
+    </div>
+  </form>
+</div>
