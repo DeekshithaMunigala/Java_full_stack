@@ -1,7 +1,6 @@
 package com.wipro.productms.service.impl;
 
 
-import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -13,6 +12,7 @@ import com.wipro.productms.dto.ProductDTO;
 import com.wipro.productms.entity.Product;
 import com.wipro.productms.repo.ProductRepo;
 import com.wipro.productms.service.ProductService;
+import com.wipro.productms.exception.ResourceNotFoundException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -105,13 +105,29 @@ public class ProductServiceImpl implements ProductService {
     }
     
     @Override
-    public void updateProductQuantity(Long productId, Integer quantity) {
-        Product product = getProductById(productId);
-        product.setQuantity(product.getQuantity() - quantity);
-        productRepo.save(product);
-        
-        kafkaTemplate.send("product-inventory-update", productId.toString(), product);
+    @Transactional
+    public void updateProductQuantity(Long productId, Integer quantityChange) {
+        try {
+            Product product = getProductById(productId);
+            
+            int newQuantity = product.getQuantity() + quantityChange;
+            if (newQuantity < 0) {
+                throw new RuntimeException("Insufficient inventory for product: " + productId);
+            }
+            
+            product.setQuantity(newQuantity);
+            productRepo.save(product);
+            
+            System.out.println("Updated product: " + productId + 
+                              ", quantity change: " + quantityChange + 
+                              ", new quantity: " + newQuantity);
+        } catch (Exception e) {
+            System.err.println("Error updating product quantity: " + e.getMessage());
+            throw e;  // fixed the space issue
+        }
     }
+
+
     
     private String saveImage(MultipartFile image) throws IOException {
         
